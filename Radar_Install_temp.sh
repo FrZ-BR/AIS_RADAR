@@ -4,10 +4,10 @@ clear
 
 echo "============================================="
 echo "Auto Radar download, build and update script"
-echo "               Version 1.15"
+echo "               Version 1.20"
 echo "============================================="
 
-ip1=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
+ip1=$(ip addr show | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 
 #U need to run this as Root, MAH BOI
 if [[ $EUID -ne 0 ]]
@@ -56,21 +56,42 @@ else
 fi
 
 echo "===================================="
+echo "What version of radar do you want?"
+echo "===================================="
+echo "1) Jerry1211"
+echo "2) Rage verison of Jerry radar"
+read sl1
+
+case $sl1 in
+ 	1)
+		rad_dir=$HOME/Radar/Radar_Jerry
+		git_base=git://github.com/Jerry1211/RadarProject
+ 		;;
+ 	2)
+		rad_dir=$HOME/Radar/Radar_Rage
+		git_base=git://github.com/theRageNT/RageRadar
+		;;
+	*)
+		echo "WRONG INPUT, EXITING...."
+		;;
+esac 
+
+echo "===================================="
 echo "Downloading new radar..."
 echo "===================================="
 
 #do you have mah previous build?
-if [[ -d $HOME/Radar/Radar_temp ]]
+if [[ -d $rad_dir ]]
 then
-	cd $HOME/Radar/Radar_temp
+	cd $rad_dir
 	if [[ $(git pull | grep -c Already) > 0 ]]
 	then
-		echo "Radar is already latest version.. Exiting"
+		echo "Radar is already latest version. Exiting..."
 		exit
 	fi
 	git pull 
 else
-	git clone git://github.com/Jerry1211/RadarProject $HOME/Radar/Radar_temp > /dev/null
+	git clone $git_base $rad_dir > /dev/null
 	cd $HOME/Radar
 	echo "===================================="
 	echo "    Enter you game PC ip please"
@@ -87,12 +108,12 @@ else
 	chmod +x run.sh
 fi
 
-cd $HOME/Radar/Radar_temp
+cd $rad_dir
 echo "===================================="
 echo "Building JAR..."
 echo "===================================="
 mvn install > /dev/null
-mv $HOME/Radar/Radar_temp/target/VMRadar-1.2.1-jar-with* $HOME/Radar/Rad.jar
+mv %rad_dir/target/*with-dependencies.jar $HOME/Radar/Rad.jar
 
 
 echo "==========================================="
