@@ -3,12 +3,12 @@ Autoinstall script for linux
 
 What can it do:
 1) Check dependencies - java, maven, git. Install them if not found. !ONLY! for Linux systems with avalible apt-get\apt commands.
-2) Download latest verison of Jerry1211 radar or RAGE verison of radar
+2) Download latest verison of Jerry1211 radar or verison of radar by Rage
 3) Compiles radar
 4) Sets IPs. You need to input your game pc IP.
 5) Updates radar to latest version on next script run.
 
-6) To run radar after script-  go to $HOME/Radar, run run.sh from SUDO.
+6) To run radar after script-  go to $HOME/Radar, run run_%radarname%.sh from SUDO.
 
 To run Radar_Install.sh:
 1) Clone\download script from this repo
@@ -26,7 +26,7 @@ On Russian:
 4) Задать ИП. Ип игровой машина надо будет ввести.
 5) Обновить радар до последней версии при следующих запусках скрипта.
 
-6) Чтобы запустить радар после выполнения скрипта перейдите в $HOME/Radar и запустите скрипт run.sh от SUDO.
+6) Чтобы запустить радар после выполнения скрипта перейдите в $HOME/Radar и запустите скрипт run_%radarname%.sh от SUDO.
 
 Чтобы запустить сам скрипт Radar_Install.sh:
 1) Клонируйте\скачайте скрипт с этого репозитория.

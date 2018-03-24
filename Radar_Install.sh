@@ -59,20 +59,23 @@ echo "===================================="
 echo "What version of radar do you want?"
 echo "===================================="
 echo "1) Jerry1211"
-echo "2) Rage verison of Jerry radar"
+echo "2) Verison of Jerry radar by Rage"
 read sl1
 
 case $sl1 in
  	1)
+		name=Jerry
 		rad_dir=$HOME/Radar/Radar_Jerry
 		git_base=git://github.com/Jerry1211/RadarProject
  		;;
  	2)
+		name=Rage
 		rad_dir=$HOME/Radar/Radar_Rage
 		git_base=git://github.com/theRageNT/RageRadar
 		;;
 	*)
 		echo "WRONG INPUT, EXITING...."
+		exit
 		;;
 esac 
 
@@ -104,8 +107,8 @@ else
 		echo "TYPE IP ADRESS, LIKE 192.168.1.2!!!!"
 		read ip2
 	done
-	echo "sudo java -jar Rad.jar $ip1 PortFilter $ip2" > run.sh
-	chmod +x run.sh
+	echo "sudo java -jar Rad_$name.jar $ip1 PortFilter $ip2" > run_$name.sh
+	chmod +x run_$name.sh
 fi
 
 cd $rad_dir
@@ -113,7 +116,7 @@ echo "===================================="
 echo "Building JAR..."
 echo "===================================="
 mvn install > /dev/null
-mv $rad_dir/target/*with-dependencies.jar $HOME/Radar/Rad.jar
+mv $rad_dir/target/*with-depend*.jar $HOME/Radar/Rad_$name.jar
 
 
 echo "==========================================="
