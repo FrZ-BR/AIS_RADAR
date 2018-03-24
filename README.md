@@ -3,7 +3,7 @@ Autoinstall script for linux
 
 What can it do:
 1) Check dependencies - java, maven, git. Install them if not found. !ONLY! for Linux systems with avalible apt-get\apt commands.
-2) Download latest verison of Jerry1211 radar
+2) Download latest verison of Jerry1211 radar or RAGE verison of radar
 3) Compiles radar
 4) Sets IPs. You need to input your game pc IP.
 5) Updates radar to latest version on next script run.
@@ -21,7 +21,7 @@ On Russian:
 
 Что может скрипт:
 1) Проверить зависимости - java, maven, git. Установить их, если их нет. !ТОЛЬКО! для линукс систем с командами apt-get\apt. 
-2) Скачать последнюю версию радара от Джери1211
+2) Скачать последнюю версию радара от Джери1211 или Рейджа
 3) Скомпилировать радар.
 4) Задать ИП. Ип игровой машина надо будет ввести.
 5) Обновить радар до последней версии при следующих запусках скрипта.
