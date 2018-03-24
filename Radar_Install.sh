@@ -113,7 +113,7 @@ echo "===================================="
 echo "Building JAR..."
 echo "===================================="
 mvn install > /dev/null
-mv %rad_dir/target/*with-dependencies.jar $HOME/Radar/Rad.jar
+mv $rad_dir/target/*with-dependencies.jar $HOME/Radar/Rad.jar
 
 
 echo "==========================================="
