@@ -7,6 +7,10 @@ echo "Auto Radar download, build and update script"
 echo "               Version 1.20"
 echo "============================================="
 
+#fuck dat shit man, dat home directory :D Fixing
+HOME2=/home/$SUDO_USER
+
+#detect IP of VM
 ip1=$(ip addr show | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 
 #U need to run this as Root, MAH BOI
@@ -25,10 +29,10 @@ then
 else
 	echo "No java found"
 	echo "Installing...."
-	sudo add-apt-repository --yes ppa:webupd8team/java > /dev/null
-	sudo apt-get --yes update > /dev/null
-	sudo apt --yes --force-yes install oracle-java9-installer > /dev/null
-	sudo apt --yes --force-yes install oracle-java9-set-default > /dev/null
+	sudo add-apt-repository --yes ppa:webupd8team/java
+	sudo apt-get --yes update
+	sudo apt --yes --force-yes install oracle-java9-installer
+	sudo apt --yes --force-yes install oracle-java9-set-default
 fi
 
 #check if u have maven, son
@@ -39,8 +43,8 @@ then
 else
 	echo "No Maven found"
 	echo "Installing...."
-	sudo apt-get --yes update > /dev/null
-	sudo apt-get --yes --force-yes install maven > /dev/null
+	sudo apt-get --yes update
+	sudo apt-get --yes --force-yes install maven
 fi
 
 #check if u have git, son
@@ -51,8 +55,8 @@ then
 else
 	echo "No Git found"
 	echo "Installing...."
-	sudo apt-get --yes update > /dev/null
-	sudo apt-get --yes --force-yes install git > /dev/null
+	sudo apt-get --yes update
+	sudo apt-get --yes --force-yes install git
 fi
 
 echo "===================================="
@@ -65,12 +69,12 @@ read sl1
 case $sl1 in
  	1)
 		name=Jerry
-		rad_dir=$HOME/Radar/Radar_Jerry
+		rad_dir=$HOME2/Radar/Radar_Jerry
 		git_base=git://github.com/Jerry1211/RadarProject
  		;;
  	2)
 		name=Rage
-		rad_dir=$HOME/Radar/Radar_Rage
+		rad_dir=$HOME2/Radar/Radar_Rage
 		git_base=git://github.com/theRageNT/RageRadar
 		;;
 	*)
@@ -95,7 +99,7 @@ then
 	git pull 
 else
 	git clone $git_base $rad_dir > /dev/null
-	cd $HOME/Radar
+	cd $HOME2/Radar
 	echo "===================================="
 	echo "    Enter you game PC ip please"
 	echo "       example - 192.168.1.2"
@@ -116,12 +120,12 @@ echo "===================================="
 echo "Building JAR..."
 echo "===================================="
 mvn install > /dev/null
-mv $rad_dir/target/*with-depend*.jar $HOME/Radar/Rad_$name.jar
+mv $rad_dir/target/*with-depend*.jar $HOME2/Radar/Rad_$name.jar
 
 
 echo "==========================================="
 echo "                   Done!"
-echo "Run $HOME/Radar/run.sh now and play PUBG ;)"
+echo "Run $HOME2/Radar/run.sh now and play PUBG ;)"
 echo "==========================================="
 
 
