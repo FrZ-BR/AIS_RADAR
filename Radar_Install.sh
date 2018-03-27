@@ -30,7 +30,7 @@ else
 	echo "No java found"
 	echo "Installing...."
 	sudo add-apt-repository --yes ppa:webupd8team/java
-	sudo apt-get --yes update
+	sudo apt-get --yes update > /dev/null
 	sudo apt --yes --force-yes install oracle-java9-installer
 	sudo apt --yes --force-yes install oracle-java9-set-default
 fi
@@ -43,8 +43,8 @@ then
 else
 	echo "No Maven found"
 	echo "Installing...."
-	sudo apt-get --yes update
-	sudo apt-get --yes --force-yes install maven
+	sudo apt-get --yes update > /dev/null
+	sudo apt-get --yes --force-yes install maven > /dev/null
 fi
 
 #check if u have git, son
@@ -55,8 +55,8 @@ then
 else
 	echo "No Git found"
 	echo "Installing...."
-	sudo apt-get --yes update
-	sudo apt-get --yes --force-yes install git
+	sudo apt-get --yes update > /dev/null
+	sudo apt-get --yes --force-yes install git > /dev/null
 fi
 
 echo "===================================="
@@ -119,7 +119,7 @@ cd $rad_dir
 echo "===================================="
 echo "Building JAR..."
 echo "===================================="
-mvn install > /dev/null
+mvn install
 mv $rad_dir/target/*with-depend*.jar $HOME2/Radar/Rad_$name.jar
 
 
